@@ -49,10 +49,20 @@ not one of the three it knows, point it straight at the logs:
 node hindsight/scripts/reflect.mjs doctor --transcripts <folder of .jsonl or .json>
 ```
 
-To use it as a skill, drop the folder where your agent looks for skills - for example
-`~/.claude/skills/reflect` (Claude Code) or `~/.gemini/skills/reflect` (Gemini CLI) - and
-say `reflect` in a session. `SKILL.md` is plain markdown; an agent with no skill mechanism
-can be handed the same file as instructions.
+To use it as a skill, clone it straight into the folder your agent reads skills from,
+**under the name `reflect`**:
+
+```bash
+git clone https://github.com/SayHey2daddy/hindsight ~/.claude/skills/reflect   # Claude Code
+git clone https://github.com/SayHey2daddy/hindsight ~/.gemini/skills/reflect   # Gemini CLI
+```
+
+The directory name matters: `SKILL.md` declares `name: reflect`, and every skill that
+works on the machines I checked has a directory named after its own `name` field. Clone it
+as `hindsight` and you get a folder whose name disagrees with what is inside it - an
+untested shape, and not one to discover later. Then say `reflect` in a session. `SKILL.md`
+is plain markdown, so an agent with no skill mechanism can be handed the same file as
+instructions.
 
 Node 18+, no dependencies, no network, no model calls, Windows / macOS / Linux. Reports and
 `watchlist.json` live in `.reflections/` in your project (an existing `.claude/reflections/`
