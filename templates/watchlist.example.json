@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "id": "2026-09-16-verify-before-done",
+      "added": "2026-09-16",
+      "fix": "guard blocks a done claim when no test ran this session",
+      "artifact": "hooks/verify-gate.mjs",
+      "watch": ["/did you (test|verify)/i", "still broken", "it doesn't work"]
+    }
+  ]
+}
